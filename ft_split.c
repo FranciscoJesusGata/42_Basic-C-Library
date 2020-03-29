@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 12:54:07 by fgata-va          #+#    #+#             */
-/*   Updated: 2019/12/01 21:48:18 by fgata-va         ###   ########.fr       */
+/*   Updated: 2020/03/24 19:55:41 by fgata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		ft_del_matrix(char **matrix)
 	int		i;
 
 	i = 0;
-	while (matrix[i] != '\0')
+	while (matrix[i])
 	{
 		free(matrix[i]);
 		i++;
