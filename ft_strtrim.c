@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 16:52:37 by fgata-va          #+#    #+#             */
-/*   Updated: 2019/11/19 13:13:50 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/02/16 14:35:44 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,12 @@
 static unsigned int	ft_getstart(char const *s1, char const *set)
 {
 	unsigned int	i;
-	unsigned int	j;
-	unsigned int	encountered;
 
 	i = 0;
-	j = 0;
-	encountered = 0;
 	while (s1[i] != '\0')
 	{
-		while (set[j] != '\0')
-		{
-			if (s1[i] == set[j])
-				encountered = 1;
-			j++;
-		}
-		if (encountered == 0)
+		if (!(ft_strchr(set, s1[i])))
 			return (i);
-		j = 0;
-		encountered = 0;
 		i++;
 	}
 	return (i);
@@ -41,27 +29,17 @@ static unsigned int	ft_getstart(char const *s1, char const *set)
 static size_t		ft_getlen(char const *s1, char const *set, unsigned int s)
 {
 	unsigned int	i;
-	unsigned int	j;
-	unsigned int	encountered;
 
 	i = ft_strlen(s1) - 1;
-	j = 0;
-	encountered = 0;
-	while (i > s)
+	if (i == s)
+		return (1);
+	while (i >= s)
 	{
-		while (set[j] != '\0')
-		{
-			if (s1[i] == set[j])
-				encountered = 1;
-			j++;
-		}
-		if (encountered == 0)
+		if (!(ft_strchr(set, s1[i])))
 			return (i - s + 1);
-		j = 0;
-		encountered = 0;
 		i--;
 	}
-	return (0);
+	return (i);
 }
 
 char				*ft_strtrim(char const *s1, char const *set)
@@ -77,6 +55,5 @@ char				*ft_strtrim(char const *s1, char const *set)
 	str = ft_substr(s1, start, len);
 	if (str == NULL)
 		return (NULL);
-	str[ft_strlen(str)] = '\0';
 	return (str);
 }
