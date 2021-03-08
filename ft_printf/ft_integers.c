@@ -6,13 +6,13 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 11:58:10 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/11/20 13:33:28 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/08 11:26:30 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_totaldgts(t_flags *data, int dgts)
+int	ft_totaldgts(t_flags *data, int dgts)
 {
 	int		diff;
 
@@ -21,18 +21,18 @@ int			ft_totaldgts(t_flags *data, int dgts)
 		diff = data->precision_l - dgts;
 	else if (data->zero > dgts && data->precision == 0 && data->minus != 1)
 		diff = data->zero - dgts;
-	if (data->negative == 1 &&
-	(diff > 0 || (data->minus == 1 && data->zero == 0)))
+	if (data->negative == 1
+		&& (diff > 0 || (data->minus == 1 && data->zero == 0)))
 		diff += 1;
 	return (dgts + diff);
 }
 
-void		ft_putnbr_modified(int n, t_flags *data)
+void	ft_putnbr_modified(int n, t_flags *data)
 {
 	char	c;
 
-	if (n <= 2147483647 && n > -2147483648 &&
-	(data->precision != 1 || (data->precision == 1 && data->precision_l != 0)))
+	if (n <= 2147483647 && n > -2147483648 && (data->precision != 1
+			|| (data->precision == 1 && data->precision_l != 0)))
 	{
 		if (data->negative == 1 && data->zero == 0 && data->precision_l == 0)
 		{
@@ -48,7 +48,7 @@ void		ft_putnbr_modified(int n, t_flags *data)
 	}
 }
 
-int			ft_zero(int l, int zeros)
+int	ft_zero(int l, int zeros)
 {
 	int		i;
 	int		prnt;
@@ -63,7 +63,7 @@ int			ft_zero(int l, int zeros)
 	return (prnt);
 }
 
-void		ft_int_flags(t_flags *data, int *dgts)
+void	ft_int_flags(t_flags *data, int *dgts)
 {
 	if (data->width > 0 && data->minus != 1)
 		ft_width(data->width, ft_totaldgts(data, *dgts), data);
@@ -81,16 +81,13 @@ void		ft_int_flags(t_flags *data, int *dgts)
 		data->printed += ft_zero(*dgts, data->precision_l);
 }
 
-void		ft_prnt_int(va_list ap, t_flags *data)
+void	ft_prnt_int(va_list ap, t_flags *data)
 {
 	long long int	prnt;
 	int				dgts;
-	char			*tmp;
 
 	prnt = va_arg(ap, int);
-	tmp = ft_itoa(prnt);
-	dgts = ft_strlen(tmp);
-	free(tmp);
+	dgts = ft_nbr_len(prnt, 10);
 	if (prnt < 0 && prnt > -2147483648)
 	{
 		data->negative = 1;

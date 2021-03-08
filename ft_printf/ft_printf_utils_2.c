@@ -6,13 +6,13 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:59:25 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/02/17 14:48:12 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/08 11:28:12 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int					ft_write_str(char *str, t_flags *data)
+int	ft_write_str(char *str, t_flags *data)
 {
 	unsigned int	i;
 	unsigned int	len;
@@ -37,7 +37,7 @@ int					ft_write_str(char *str, t_flags *data)
 	return (i);
 }
 
-int					ft_check_segfault(const char *f)
+int	ft_check_segfault(const char *f)
 {
 	int				i;
 	int				ok;
@@ -55,7 +55,7 @@ int					ft_check_segfault(const char *f)
 	return (ok);
 }
 
-int					ft_neg_star(int num, t_flags *data)
+int	ft_neg_star(int num, t_flags *data)
 {
 	if (data->precision == 1)
 	{
@@ -64,4 +64,19 @@ int					ft_neg_star(int num, t_flags *data)
 	}
 	data->minus = 1;
 	return (num * -1);
+}
+
+int	ft_nbr_len(long int n, int base)
+{
+	int	i;
+
+	i = 0;
+	if (n < base)
+		return (1);
+	while (n > 0)
+	{
+		n /= base;
+		i++;
+	}
+	return (i);
 }

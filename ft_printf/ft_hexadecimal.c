@@ -6,30 +6,13 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 19:36:39 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/02/12 19:11:51 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/08 11:15:31 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int					ft_hex_len(unsigned int num)
-{
-	int				i;
-	unsigned int	n;
-
-	i = 0;
-	n = num;
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n /= 16;
-		i++;
-	}
-	return (i);
-}
-
-void				ft_dec_to_hex(unsigned int num, t_flags *data, int mayus)
+void	ft_dec_to_hex(unsigned int num, t_flags *data, int mayus)
 {
 	char			c;
 	unsigned int	h;
@@ -53,13 +36,13 @@ void				ft_dec_to_hex(unsigned int num, t_flags *data, int mayus)
 	}
 }
 
-void				ft_print_hex(va_list ap, t_flags *data, int mayus)
+void	ft_print_hex(va_list ap, t_flags *data, int mayus)
 {
 	unsigned int	dec;
 	int				l;
 
 	dec = va_arg(ap, unsigned int);
-	l = ft_hex_len(dec);
+	l = ft_nbr_len(dec, 16);
 	if (data->width > 0 && data->minus != 1)
 		ft_width(data->width, ft_totaldgts(data, l), data);
 	if (data->zero > 0 && data->precision == 1)
@@ -68,11 +51,11 @@ void				ft_print_hex(va_list ap, t_flags *data, int mayus)
 		data->printed += ft_zero(l, data->zero);
 	if (data->precision == 1 && data->precision_l > l)
 		data->printed += ft_zero(l, data->precision_l);
-	if (dec == 0 && (data->precision == 0 ||
-	(data->precision == 1 && data->precision_l > 0)))
+	if (dec == 0 && (data->precision == 0
+			|| (data->precision == 1 && data->precision_l > 0)))
 		data->printed += write(1, "0", 1);
-	else if (data->precision == 0 ||
-	(data->precision == 1 && data->precision_l > 0))
+	else if (data->precision == 0
+		|| (data->precision == 1 && data->precision_l > 0))
 		ft_dec_to_hex(dec, data, mayus);
 	else if (data->precision_l > 0 || data->width > 0)
 		data->printed += write(1, " ", 1);

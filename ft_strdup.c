@@ -6,13 +6,13 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:59:15 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/01/13 15:27:01 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/04 19:19:36 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char				*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char			*s2;
 	size_t			l;

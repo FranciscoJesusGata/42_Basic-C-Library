@@ -6,21 +6,21 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:20:37 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/02/17 11:45:31 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/08 11:37:06 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int						ft_p_len(unsigned long int num, t_flags *data)
+int	ft_p_len(unsigned long int num, t_flags *data)
 {
 	int					i;
 	unsigned long int	n;
 
 	i = 0;
 	n = num;
-	if ((n == 0 && data->precision == 0) ||
-	(n == 0 && data->precision == 1 && data->precision_l > 0))
+	if ((n == 0 && data->precision == 0)
+		|| (n == 0 && data->precision == 1 && data->precision_l > 0))
 		i = 1;
 	while (n > 0)
 	{
@@ -30,7 +30,7 @@ int						ft_p_len(unsigned long int num, t_flags *data)
 	return (i + 2);
 }
 
-void					ft_hex_p(unsigned long int n, t_flags *data)
+void	ft_hex_p(unsigned long int n, t_flags *data)
 {
 	char				c;
 	unsigned long int	h;
@@ -41,16 +41,14 @@ void					ft_hex_p(unsigned long int n, t_flags *data)
 		ft_hex_p(n / 16, data);
 		h = n % 16;
 		if (h > 9)
-		{
 			c = (h - 10) + 'a';
-		}
 		else if (h <= 9)
 			c = h + '0';
 		data->printed += write(1, &c, 1);
 	}
 }
 
-void					ft_print_pointer(va_list ap, t_flags *data)
+void	ft_print_pointer(va_list ap, t_flags *data)
 {
 	unsigned long int	p;
 	unsigned int		len;
@@ -64,8 +62,8 @@ void					ft_print_pointer(va_list ap, t_flags *data)
 		data->printed += ft_zero(len - 2, data->zero);
 	if (data->precision == 1 && data->precision_l > (int)(len - 2))
 		data->printed += ft_zero(len - 2, data->precision_l);
-	if ((p == 0 && data->precision == 0) ||
-	(p == 0 && data->precision == 1 && data->precision_l > 0))
+	if ((p == 0 && data->precision == 0)
+		|| (p == 0 && data->precision == 1 && data->precision_l > 0))
 	{
 		data->printed += 1;
 		ft_putnbr_fd(0, 1);

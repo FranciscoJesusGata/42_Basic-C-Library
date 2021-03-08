@@ -6,23 +6,23 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 18:43:44 by fgata-va          #+#    #+#             */
-/*   Updated: 2019/11/20 16:17:56 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/04 19:04:23 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_clean_garbage(int i, const char *str)
+static int	ft_clean_garbage(int i, const char *str)
 {
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' ||
-		str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'\
+		 || str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
 	{
 		i++;
 	}
 	return (i);
 }
 
-static int		ft_negative(int *n, const char c, int i)
+static int	ft_negative(int *n, const char c, int i)
 {
 	if (c == '-' || c == '+')
 	{
@@ -35,9 +35,9 @@ static int		ft_negative(int *n, const char c, int i)
 	return (i);
 }
 
-static long		ft_store_nmb(int *x, const char *str, long resp, int n)
+static long	ft_store_nmb(int *x, const char *str, long resp, int n)
 {
-	int i;
+	int		i;
 
 	i = *x;
 	while (str[i] >= 48 && str[i] <= 57)
@@ -53,11 +53,11 @@ static long		ft_store_nmb(int *x, const char *str, long resp, int n)
 	return (resp);
 }
 
-int				ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	long			resp;
-	int				i;
-	int				n;
+	long	resp;
+	int		i;
+	int		n;
 
 	i = 0;
 	resp = 0;

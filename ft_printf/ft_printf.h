@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:10:34 by fgata-va          #+#    #+#             */
-/*   Updated: 2021/03/04 15:39:16 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/08 10:53:51 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int				ft_totaldgts(t_flags *data, int dgts);
 void			ft_prnt_unsig(va_list ap, t_flags *data);
 void			ft_print_pointer(va_list ap, t_flags *data);
 int				ft_check_segfault(const char *f);
+int				ft_nbr_len(long int n, int base);
 
 #endif

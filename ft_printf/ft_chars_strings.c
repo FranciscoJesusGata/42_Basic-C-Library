@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 13:12:55 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/02/11 17:58:36 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/05 13:38:30 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_strings(va_list ap, t_flags *data)
 {
-	const char *str;
+	const char	*str;
 
 	str = (const char *)va_arg(ap, const char *);
 	if (str && ft_strlen(str) > 0)
@@ -27,7 +27,7 @@ void	ft_strings(va_list ap, t_flags *data)
 
 void	ft_chrs(va_list ap, t_flags *data)
 {
-	char c;
+	char	c;
 
 	c = va_arg(ap, int);
 	if (data->width > 0 && data->minus != 1)

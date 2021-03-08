@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 14:17:05 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/02/17 14:12:41 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/05 13:44:15 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_width(int width, int str_length, t_flags *data)
 	}
 }
 
-int		ft_control_star(const char *f, int *i, va_list ap, t_flags *data)
+int	ft_control_star(const char *f, int *i, va_list ap, t_flags *data)
 {
 	int	num;
 

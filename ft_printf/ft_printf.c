@@ -6,14 +6,14 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:10:38 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/02/17 14:05:11 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/05 13:40:19 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdlib.h>
 
-void		ft_conversions(va_list ap, char c, t_flags *data)
+void	ft_conversions(va_list ap, char c, t_flags *data)
 {
 	if (c == 'c')
 		ft_chrs(ap, data);
@@ -33,7 +33,7 @@ void		ft_conversions(va_list ap, char c, t_flags *data)
 		ft_print_pointer(ap, data);
 }
 
-void		ft_modifiers(const char *f, int *i, t_flags *data, va_list ap)
+void	ft_modifiers(const char *f, int *i, t_flags *data, va_list ap)
 {
 	char	c;
 
@@ -51,7 +51,7 @@ void		ft_modifiers(const char *f, int *i, t_flags *data, va_list ap)
 	}
 }
 
-void		ft_parse_str(t_flags *data, const char *format, va_list ap, int *i)
+void	ft_parse_str(t_flags *data, const char *format, va_list ap, int *i)
 {
 	if (ft_strchr(CONVERSIONS, format[*i]))
 	{
@@ -62,9 +62,9 @@ void		ft_parse_str(t_flags *data, const char *format, va_list ap, int *i)
 		ft_modifiers(format, i, data, ap);
 }
 
-int			ft_manageformat(t_flags *data, const char *format, va_list ap)
+int	ft_manageformat(t_flags *data, const char *format, va_list ap)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (format[i])
@@ -83,17 +83,17 @@ int			ft_manageformat(t_flags *data, const char *format, va_list ap)
 					break ;
 				}
 			}
-			continue;
+			continue ;
 		}
 		i++;
 	}
 	return (data->printed);
 }
 
-int			ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	t_flags	*data;
-	va_list ap;
+	va_list	ap;
 	int		printed;
 
 	va_start(ap, format);

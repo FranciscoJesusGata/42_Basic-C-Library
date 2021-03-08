@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 16:52:37 by fgata-va          #+#    #+#             */
-/*   Updated: 2021/02/16 14:35:44 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/05 11:26:02 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static unsigned int	ft_getstart(char const *s1, char const *set)
 	return (i);
 }
 
-static size_t		ft_getlen(char const *s1, char const *set, unsigned int s)
+static size_t	ft_getlen(char const *s1, char const *set, unsigned int s)
 {
 	unsigned int	i;
 
@@ -42,7 +42,7 @@ static size_t		ft_getlen(char const *s1, char const *set, unsigned int s)
 	return (i);
 }
 
-char				*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char			*str;
 	unsigned int	start;

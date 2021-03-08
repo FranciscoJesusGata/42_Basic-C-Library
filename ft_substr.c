@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:24:48 by fgata-va          #+#    #+#             */
-/*   Updated: 2019/12/02 19:34:14 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/04 19:13:08 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	maxl = ft_strlen(s);
 	if (start >= maxl)
 		return (ft_strdup(""));
-	if (!(subst = (char *)malloc(sizeof(char) * len + 1)))
+	subst = (char *)malloc(sizeof(char) * len + 1);
+	if (!subst)
 		return (NULL);
 	i = start;
 	j = 0;

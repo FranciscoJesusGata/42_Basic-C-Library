@@ -6,16 +6,16 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 12:54:07 by fgata-va          #+#    #+#             */
-/*   Updated: 2020/11/24 21:35:20 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/05 11:43:27 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_wrds(char const *s, char c)
+int	ft_wrds(char const *s, char c)
 {
-	int wrds;
-	int wrd_fnd;
+	int	wrds;
+	int	wrd_fnd;
 
 	wrds = 0;
 	wrd_fnd = 0;
@@ -33,9 +33,9 @@ int			ft_wrds(char const *s, char c)
 	return (wrds);
 }
 
-int			ft_chars(char const *s, char c)
+int	ft_chars(char const *s, char c)
 {
-	int cs;
+	int	cs;
 
 	cs = 0;
 	while (*s != c && *s != '\0')
@@ -46,9 +46,9 @@ int			ft_chars(char const *s, char c)
 	return (cs);
 }
 
-void		ft_del_matrix(char **matrix)
+void	ft_del_matrix(char **matrix)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (matrix[i])
@@ -59,9 +59,9 @@ void		ft_del_matrix(char **matrix)
 	free(matrix);
 }
 
-void		ft_fillstr(int j, char **wrds, char const *s, char c)
+void	ft_fillstr(int j, char **wrds, char const *s, char c)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (*s != c && *s != '\0')
@@ -71,23 +71,23 @@ void		ft_fillstr(int j, char **wrds, char const *s, char c)
 	}
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**wrds;
 	int		wrd_l;
 	int		j;
 
 	if (!s)
-		return (NULL);
-	if (!(wrds = ft_calloc(ft_wrds(s, c) + 1, sizeof(char *))))
-		return (NULL);
+		return (0);
+	wrds = ft_calloc(ft_wrds(s, c), sizeof(char *));
 	j = 0;
-	while (*s != '\0')
+	while (*s != '\0' && wrds)
 	{
 		while (*s == c)
 			s++;
 		wrd_l = ft_chars(s, c);
-		if (wrd_l > 0 && !(wrds[j] = ft_calloc((wrd_l + 1), sizeof(char))))
+		wrds[j] = ft_calloc((wrd_l + 1), sizeof(char));
+		if (wrd_l > 0 && !wrds[j])
 		{
 			ft_del_matrix(wrds);
 			return (NULL);

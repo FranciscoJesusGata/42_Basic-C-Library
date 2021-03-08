@@ -6,13 +6,13 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 13:38:29 by fgata-va          #+#    #+#             */
-/*   Updated: 2019/12/04 21:03:44 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/04 19:12:03 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_strnstr(const char *str, const char *n, size_t len)
+char	*ft_strnstr(const char *str, const char *n, size_t len)
 {
 	int			i;
 	int			j;
