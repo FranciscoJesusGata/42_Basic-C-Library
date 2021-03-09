@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 12:54:07 by fgata-va          #+#    #+#             */
-/*   Updated: 2021/03/05 11:43:27 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/09 12:11:39 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,42 +59,47 @@ void	ft_del_matrix(char **matrix)
 	free(matrix);
 }
 
-void	ft_fillstr(int j, char **wrds, char const *s, char c)
+int	ft_fillstr(int j, char **wrds, char const *s, char c)
 {
 	int	i;
+	int	wrd_l;
 
 	i = 0;
-	while (*s != c && *s != '\0')
+	wrd_l = ft_chars(s, c);
+	wrds[j] = ft_calloc((wrd_l + 1), sizeof(char));
+	while (*s != c && s)
 	{
 		wrds[j][i++] = *s;
 		s++;
 	}
+	return (wrd_l);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**wrds;
-	int		wrd_l;
+	int		len;
 	int		j;
 
-	if (!s)
-		return (0);
+	if (!s || !c)
+		return (NULL);
 	wrds = ft_calloc(ft_wrds(s, c), sizeof(char *));
 	j = 0;
-	while (*s != '\0' && wrds)
+	while (*s && wrds)
 	{
-		while (*s == c)
-			s++;
-		wrd_l = ft_chars(s, c);
-		wrds[j] = ft_calloc((wrd_l + 1), sizeof(char));
-		if (wrd_l > 0 && !wrds[j])
+		if (*s != c)
 		{
-			ft_del_matrix(wrds);
-			return (NULL);
+			len = ft_fillstr(j, wrds, s, c);
+			if (!wrds[j])
+			{
+				ft_del_matrix(wrds);
+				return (NULL);
+			}
+			s += len - 1;
+			j++;
 		}
-		ft_fillstr(j, wrds, s, c);
-		s += wrd_l;
-		j++;
+		s++;
 	}
+	wrds[j] = NULL;
 	return (wrds);
 }

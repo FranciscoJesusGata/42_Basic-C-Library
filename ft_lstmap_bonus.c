@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 20:36:46 by fgata-va          #+#    #+#             */
-/*   Updated: 2021/03/05 13:14:41 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/09 11:21:13 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstmap(t_list *l, void *(*f)(void *), void (*d)(void *))
 	t_list	*newlst;
 	t_list	*rlst;
 
-	if (!l || !f || !d)
+	if (!l)
 		return (NULL);
 	newlst = ft_lstnew((*f)(l->content));
 	if (!newlst)

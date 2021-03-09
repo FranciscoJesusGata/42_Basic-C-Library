@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 13:10:34 by fgata-va          #+#    #+#             */
-/*   Updated: 2021/03/08 10:53:51 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/09 13:00:27 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include "../libft.h"
 
-typedef struct	s_printf
+typedef struct s_printf
 {
 	int		printed;
 	int		minus;
