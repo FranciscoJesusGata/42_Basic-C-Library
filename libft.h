@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 19:54:30 by fgata-va          #+#    #+#             */
-/*   Updated: 2021/03/09 12:56:03 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/10 18:25:17 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_list
 }				t_list;
 
 int				ft_atoi(const char *str);
+long			ft_atol(const char *str);
 void			ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t count, size_t size);
 int				ft_isalnum(int c);
