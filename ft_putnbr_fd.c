@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 16:36:21 by fgata-va          #+#    #+#             */
-/*   Updated: 2021/03/09 09:08:20 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/03/10 19:21:36 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char		c;
+	char	c;
+	long	nbr;
 
-	if (n <= 2147483647 && n >= -2147483648)
+	nbr = n;
+	if (nbr < 0)
 	{
-		if (n < 0)
-		{
-			ft_putchar_fd('-', fd);
-			if (n == -2147483648)
-			{
-				ft_putchar_fd('2', fd);
-				n *= -1;
-				n = n % 1000000000;
-			}
-			n *= -1;
-		}
-		if (n > 9)
-		{
-			ft_putnbr_fd(n / 10, fd);
-		}
-		c = (n % 10) + '0';
-		ft_putchar_fd(c, fd);
+		ft_putchar_fd('-', fd);
+		nbr = -nbr;
 	}
+	if (nbr > 9)
+	{
+		ft_putnbr_fd(nbr / 10, fd);
+	}
+	c = (nbr % 10) + '0';
+	ft_putchar_fd(c, fd);
 }
