@@ -6,7 +6,7 @@
 #    By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/21 17:33:16 by fgata-va          #+#    #+#              #
-#    Updated: 2021/03/18 13:29:35 by fgata-va         ###   ########.fr        #
+#    Updated: 2021/03/18 21:56:12 by fgata-va         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,11 +39,8 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(PRINTOBJS)
-		$(CC) $(CFLAGS) -c -I. -g $(SRC)
+		$(CC) $(CFLAGS) -c -Ift_printf/ $(SRC)
 		ar rc $(NAME) $(OBJS) $(PRINTOBJS)
-
-$(PRINTOBJS): $(PRINTSRC)
-	$(CC) -Ift_printf/ -g -c -o $@ $<
 
 bonus: $(PRINTOBJS)
 		$(CC) $(CFLAGS) -c -I. -g $(BONUSSRC) $(SRC)
