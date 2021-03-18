@@ -6,7 +6,7 @@
 #    By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/21 17:33:16 by fgata-va          #+#    #+#              #
-#    Updated: 2021/03/09 13:00:00 by fgata-va         ###   ########.fr        #
+#    Updated: 2021/03/18 13:29:35 by fgata-va         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ PRINTOBJS = $(PRINTSRC:.c=.o)
 
 BONUSOBJS = $(BONUSSRC:.c=.o)
 
-OBJ = $(SRC:.c=.o)
+OBJS = $(SRC:.c=.o)
 
 NAME = libft.a
 
@@ -47,10 +47,10 @@ $(PRINTOBJS): $(PRINTSRC)
 
 bonus: $(PRINTOBJS)
 		$(CC) $(CFLAGS) -c -I. -g $(BONUSSRC) $(SRC)
-		ar rc $(NAME) $(OBJ) $(BONUSOBJS) $(PRINTOBJS)
+		ar rc $(NAME) $(OBJS) $(BONUSOBJS) $(PRINTOBJS)
 
 clean: 
-		rm -f $(OBJ)
+		rm -f $(OBJS)
 		rm -f $(BONUSOBJS)
 		rm -f $(PRINTOBJS)
 
