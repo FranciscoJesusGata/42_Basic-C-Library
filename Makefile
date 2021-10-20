@@ -6,7 +6,7 @@
 #    By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/21 17:33:16 by fgata-va          #+#    #+#              #
-#    Updated: 2021/03/18 21:56:12 by fgata-va         ###   ########.fr        #
+#    Updated: 2021/10/20 18:01:30 by fgata-va         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ ft_printf/ft_pointers.c ft_printf/ft_unsigned.c
 
 PRINTOBJS = $(PRINTSRC:.c=.o)
 
-BONUSOBJS = $(BONUSSRC:.c=.o)
+BONUSOBJS =  $(patsubst ft_printf/%,ft_printf/%,$(BONUSSRC:.c=.o))
 
 OBJS = $(SRC:.c=.o)
 
@@ -38,13 +38,12 @@ NAME = libft.a
 
 all: $(NAME)
 
-$(NAME): $(PRINTOBJS)
+$(NAME): $(OBJS) $(PRINTOBJS)
 		$(CC) $(CFLAGS) -c -Ift_printf/ $(SRC)
-		ar rc $(NAME) $(OBJS) $(PRINTOBJS)
+		ar rc $(NAME) $(OBJS) $(O_OBJS) $(PRINTOBJS)
 
-bonus: $(PRINTOBJS)
-		$(CC) $(CFLAGS) -c -I. -g $(BONUSSRC) $(SRC)
-		ar rc $(NAME) $(OBJS) $(BONUSOBJS) $(PRINTOBJS)
+bonus: $(BONUSOBJS)
+		$(MAKE) O_OBJS="$(BONUSOBJS)" all
 
 clean: 
 		rm -f $(OBJS)
