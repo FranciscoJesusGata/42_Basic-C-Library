@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 15:21:14 by fgata-va          #+#    #+#             */
-/*   Updated: 2019/11/29 16:02:22 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/10/20 18:15:52 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
+	t_list	*iterable;
+
 	if (!lst || !new)
 		return ;
 	else if (!*lst)
@@ -23,11 +25,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 	else
 	{
-		while ((*lst)->next != NULL)
-		{
-			*lst = (*lst)->next;
-		}
-		(*lst)->next = new;
-		new->next = NULL;
+		iterable = *lst;
+		while (iterable->next != NULL)
+			iterable = iterable->next;
+		iterable->next = new;
 	}
 }
