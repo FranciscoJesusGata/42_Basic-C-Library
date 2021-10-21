@@ -6,7 +6,7 @@
 /*   By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 13:24:48 by fgata-va          #+#    #+#             */
-/*   Updated: 2021/10/20 17:35:23 by fgata-va         ###   ########.fr       */
+/*   Updated: 2021/10/21 12:43:03 by fgata-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	total_len;
 	size_t	i;
 	size_t	j;
-	size_t	sub_len;
 
 	if (!s)
 		return (NULL);
@@ -30,8 +29,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	i = start;
 	j = 0;
-	sub_len = len - start;
-	while (j < sub_len && s[i] != '\0')
+	while (j < len && s[i] != '\0')
 	{
 		substr[j] = s[i];
 		j++;
