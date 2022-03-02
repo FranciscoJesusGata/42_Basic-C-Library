@@ -6,7 +6,7 @@
 #    By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/21 17:33:16 by fgata-va          #+#    #+#              #
-#    Updated: 2021/10/20 18:01:30 by fgata-va         ###   ########.fr        #
+#    Updated: 2022/03/02 16:24:14 by fgata-va         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ $(NAME): $(OBJS) $(PRINTOBJS)
 		ar rc $(NAME) $(OBJS) $(O_OBJS) $(PRINTOBJS)
 
 bonus: $(BONUSOBJS)
-		$(MAKE) O_OBJS="$(BONUSOBJS)" all
+		$(MAKE) OBJS="$(OBJS) $(BONUSOBJS)" all
 
 clean: 
 		rm -f $(OBJS)
