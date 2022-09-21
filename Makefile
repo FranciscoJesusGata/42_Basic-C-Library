@@ -6,7 +6,7 @@
 #    By: fgata-va <fgata-va@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/21 17:33:16 by fgata-va          #+#    #+#              #
-#    Updated: 2022/03/02 16:24:14 by fgata-va         ###   ########.fr        #
+#    Updated: 2022/09/21 18:41:01 by fgata-va         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,11 +39,10 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJS) $(PRINTOBJS)
-		$(CC) $(CFLAGS) -c -Ift_printf/ $(SRC)
 		ar rc $(NAME) $(OBJS) $(O_OBJS) $(PRINTOBJS)
 
-bonus: $(BONUSOBJS)
-		$(MAKE) OBJS="$(OBJS) $(BONUSOBJS)" all
+bonus: all $(OBJS) $(BONUSOBJS)
+		@make OBJS="$(BONUSOBJS)" all
 
 clean: 
 		rm -f $(OBJS)
@@ -52,7 +51,6 @@ clean:
 
 fclean: clean
 		rm -f $(NAME)
-		rm -f $(SONAME)
 
 re: fclean all
 
